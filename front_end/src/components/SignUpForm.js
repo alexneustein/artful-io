@@ -167,14 +167,6 @@ export default class SignUpForm extends Component {
                   name="VisualArts"
                   label="Visual Arts"
                 />
-                <Form.Checkbox
-                  name="Other"
-                  label="Other"
-                />
-                <Form.Input
-                  name="Other"
-                  placeholder="Please specify"
-                  />
               </Form.Group>
 
               <Form.Group>
