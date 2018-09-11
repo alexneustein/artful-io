@@ -8,7 +8,7 @@ class ArtistCard extends Component {
     return (
       <div>
         <Card>
-          <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' />
+          <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' height/>
           <Card.Content>
             <Card.Header>Matthew</Card.Header>
             <Card.Meta>
@@ -18,8 +18,8 @@ class ArtistCard extends Component {
           </Card.Content>
           <Card.Content extra>
             <a>
-              <Icon name='user' />
-              22 Friends
+              <Icon name='like' />
+              22 Likes
             </a>
           </Card.Content>
         </Card>
