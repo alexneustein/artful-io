@@ -36,13 +36,23 @@ class GalleryPost extends Component {
     if (this.state.liked === false) {
       this.setState({
         liked: true,
-        likes: this.state.imageobj.likes += 1
+        imageobj: {...this.state.imageobj, likes: this.state.imageobj.likes + 1}
       })
+      fetch(`http://localhost:3001/images/${this.state.imageobj.id}/addlike`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'}
+      })
+
     } else {
       this.setState({
         liked: false,
-        likes: this.state.imageobj.likes -= 1
+        imageobj: {...this.state.imageobj, likes: this.state.imageobj.likes - 1}
       })
+      fetch(`http://localhost:3001/images/${this.state.imageobj.id}/unlike`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'}
+      })
+
     }
   }
 
