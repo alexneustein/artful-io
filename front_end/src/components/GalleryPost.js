@@ -3,8 +3,12 @@ import { Container, Image, Header, Comment, Card, Icon } from 'semantic-ui-react
 import CommentContainer from './CommentContainer'
 
 class GalleryPost extends Component {
-  state = {
-    imageobj: {}
+  constructor(props) {
+    super(props)
+    this.state = {
+      liked: false,
+      imageobj: {}
+    }
   }
 
   componentDidMount() {
@@ -28,14 +32,28 @@ class GalleryPost extends Component {
     }
   }
 
+  handleLike = () => {
+    if (this.state.liked === false) {
+      this.setState({
+        liked: true,
+        likes: this.state.imageobj.likes += 1
+      })
+    } else {
+      this.setState({
+        liked: false,
+        likes: this.state.imageobj.likes -= 1
+      })
+    }
+  }
+
   render() {
     return (
       <Container>
         <Header as='h2'>Image Detail</Header>
-        <Image src={this.state.imageobj.url} size='massive' rounded />
+        <Image src={this.state.imageobj.url} size='large' rounded />
         <Header as='h3'>Title: {this.state.imageobj.title}</Header>
           <Card.Content extra>
-            <a>
+            <a onClick={this.handleLike}>
               <Icon name='like' />
               {this.state.imageobj.likes} Likes
             </a>
