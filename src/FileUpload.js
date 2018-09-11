@@ -36,7 +36,7 @@ class FileUpload extends Component {
       <Form onSubmit={this.submitFile}>
         <h1>I am the image uploader</h1>
         <Input label='upload file' type='file' onChange={this.handleFileUpload} />
-        <Button type='submit'>Send</Button>
+        <Button secondary type='submit'>Send</Button>
       </Form>
     );
   }
