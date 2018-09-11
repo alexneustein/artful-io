@@ -10,15 +10,14 @@ class ArtistProfile extends Component {
       <Container>
         <Grid relaxed columns={2}>
           <Grid.Column>
-            <Image src='https://picsum.photos/200/300/?random' size='medium' rounded />
+            <Image src='https://picsum.photos/200/300/?random' size='medium' rounded border='red' />
           </Grid.Column>
           <Grid.Column>
-            <Card>
+            <Card color='red' >
               <Header as='h3'> Artist Information:</Header>
               <Card.Content>
                 <Card.Header>Artist Name: Matthew Harris</Card.Header>
-                <Header.Subheader>Joined Sep, 11, 2018</Header.Subheader>
-                <Card.Meta>Co-Worker</Card.Meta>
+                <Card.Meta>Joined Sep, 11, 2018</Card.Meta>
                 <Card.Description> Artist Biography: Matthew is a Painter living in New York. </Card.Description>
                 <Card.Description> Artist email: artist@example.com </Card.Description>
               </Card.Content>

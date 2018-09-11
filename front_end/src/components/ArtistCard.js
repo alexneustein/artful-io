@@ -7,7 +7,7 @@ class ArtistCard extends Component {
   render() {
     return (
       <div>
-        <Card>
+        <Card color='red'>
           <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' height/>
           <Card.Content>
             <Card.Header>Matthew</Card.Header>

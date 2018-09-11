@@ -7,8 +7,8 @@ class PostCard extends Component {
   render() {
     return (
       <div>
-        <Card color='purple'>
-          <Image src='https://picsum.photos/200/300/?random' />
+        <Card color='red'>
+          <Image src='https://picsum.photos/200/300/?random' height />
           <Card.Content>
             <Card.Header>Top Images</Card.Header>
             <Card.Meta>
