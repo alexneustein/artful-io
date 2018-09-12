@@ -1,42 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import ArtistCard from './ArtistCard'
-import { Dimmer, Loader, Grid, Container } from 'semantic-ui-react';
+import { Dimmer, Loader, Image, Segment, Container, Grid } from 'semantic-ui-react'
+import { Route, Switch } from 'react-router-dom'
 
 
-class TopArtists extends Component {
-
+class ArtistIndex extends Component {
   state = {
     loading: true,
-    topArtists: []
+    artistIndex: []
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/artists-top/')
+    fetch('http://localhost:3001/artists/')
     .then(res => res.json())
     .then(this.initialState)
   }
 
   initialState = (resData) => {
     this.setState({
-      topArtists: resData,
+      artistIndex: resData,
       loading: false
     })
   }
+
 
   render() {
     if(this.state.loading) {
       return (
         <Container>
           <Dimmer active inverted>
-            <Loader>Loading Top Artists</Loader>
+            <Loader>Loading Artists</Loader>
           </Dimmer>
         </Container>
       )
     }
+
     return (
       <Container>
-        <Grid relaxed columns={3}>
-          { this.state.topArtists.map(artist => {
+        <h5>All Artists</h5>
+        <Grid relaxed columns={5}>
+          { this.state.artistIndex.map(artist => {
             return (<Grid.Column>
             <ArtistCard key={artist.id} artist={artist}/>
             </Grid.Column>)
@@ -45,6 +48,7 @@ class TopArtists extends Component {
       </Container>
     );
   }
-};
 
-export default TopArtists
+}
+
+export default ArtistIndex;

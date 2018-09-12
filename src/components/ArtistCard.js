@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
-
+import dateFormatter from "./helpers";
 
 class ArtistCard extends Component {
 
   render() {
+    const avatars =  ["download-1.jpg", "download-1.png", "download-2.jpg", "download-2.png", "download-3.jpg", "download-3.png", "download-4.jpg", "download-4.png", "download-5.jpg", "download-5.png", "download-6.jpg", "download-6.png", "download-7.jpg", "download-7.png", "download.jpg", "download.png"]
+
     return (
       <div>
         <Card color='red'>
-          <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' height/>
+          <Image src={'avatar/' + avatars[Math.floor(Math.random() * ((avatars.length)-1))]} height/>
           <Card.Content>
-            <Card.Header>Matthew</Card.Header>
+            <Card.Header>{this.props.artist.name_first} {this.props.artist.name_last}</Card.Header>
             <Card.Meta>
-              <span className='date'>Joined in 2015</span>
+              <span className='date'>Joined in {dateFormatter(this.props.artist.created_at)}</span>
             </Card.Meta>
-            <Card.Description>Matthew is a musician living in Nashville.</Card.Description>
           </Card.Content>
           <Card.Content extra>
             <a>
               <Icon name='like' />
-              22 Likes
+              {this.props.artist.likes} Likes
             </a>
           </Card.Content>
         </Card>

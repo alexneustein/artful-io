@@ -1,31 +1,47 @@
 import React, { Component } from 'react';
 import PostCard from './PostCard'
-import { Grid, Container } from 'semantic-ui-react';
+import { Dimmer, Loader, Grid, Container } from 'semantic-ui-react';
 
 
 class TopPosts extends Component {
+  state = {
+    loading: true,
+    topImages: []
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3001/images-top/')
+    .then(res => res.json())
+    .then(this.initialState)
+  }
+
+  initialState = (resData) => {
+    this.setState({
+      topImages: resData,
+      loading: false
+
+    })
+  }
+
+
   render() {
+    if(this.state.loading) {
+      return (
+        <Container>
+          <Dimmer active inverted>
+            <Loader>Loading Top Images</Loader>
+          </Dimmer>
+        </Container>
+      )
+    }
     return (
       <Container>
         <Grid relaxed columns={3}>
-          <Grid.Column>
-            <PostCard />
-          </Grid.Column>
-          <Grid.Column>
-            <PostCard />
-          </Grid.Column>
-          <Grid.Column>
-            <PostCard />
-          </Grid.Column>
-          <Grid.Column>
-            <PostCard />
-          </Grid.Column>
-          <Grid.Column>
-            <PostCard />
-          </Grid.Column>
-          <Grid.Column>
-            <PostCard />
-          </Grid.Column>
+          { this.state.topImages.map(image => {
+            return (<Grid.Column>
+            <PostCard key={image.id} image={image}/>
+            </Grid.Column>)
+          }) }
         </Grid>
       </Container>
     );

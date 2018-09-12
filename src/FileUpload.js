@@ -20,10 +20,9 @@ class FileUpload extends Component {
   }
 
   upload = (e) => {
-    // debugger
-    // console.log(e.target.children[1].children[1].value)
+    const fileTarget = e.target.children[1].children[1].files[0]
     e.preventDefault();
-    ReactS3.upload(e.target.children[1].children[1].value , config)
+    ReactS3.upload(fileTarget, config)
     .then(data => {
       console.log(data)
     }).catch(error => {
@@ -36,7 +35,6 @@ class FileUpload extends Component {
   }
 
   render () {
-    console.log(this.state);
     return (
       // <div>Hello</div>
       <Form onSubmit={this.upload}>
