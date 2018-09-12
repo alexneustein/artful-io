@@ -5,12 +5,16 @@ import dateFormatter from "./helpers";
 class PostCard extends Component {
 
   render() {
+
+    const expandlink = 'images/' + this.props.image.id + '/'
+
     return (
       <div>
         <Card color='blue'>
-          <Image src={this.props.image.url} height />
-          <Card.Content>
-            <Card.Header>{this.props.image.title}</Card.Header>
+          <a href={expandlink}><Image src={this.props.image.url} height /></a>
+
+            <Card.Content>
+            <Card.Header><a href={expandlink}>{this.props.image.title}</a></Card.Header>
             <Card.Meta>
               <span className='date'>Posted in {dateFormatter(this.props.image.image_date)}</span>
             </Card.Meta>

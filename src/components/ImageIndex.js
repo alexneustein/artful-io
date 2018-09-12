@@ -58,6 +58,8 @@ class ImageIndex extends Component {
             </Grid.Column>)
           }) }
         </Grid>
+        <Pagination onPageChange={this.handlePage} size='mini' siblingRange="6" defaultActivePage={this.state.imageIndex.page} totalPages={this.state.imageIndex.pages} />
+
       </Container>
     );
   }

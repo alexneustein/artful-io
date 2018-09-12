@@ -6,13 +6,15 @@ class GalleryPost extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      imageId: this.props.match.params.id,
       liked: false,
       imageobj: {}
     }
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/images/5387')
+    const fetchPath = `http://localhost:3001/images/${this.state.imageId}`
+    fetch(fetchPath)
     .then(res => res.json())
     .then(this.initialState)
   }
@@ -57,6 +59,7 @@ class GalleryPost extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <Container>
         <Header as='h2'>Image Detail</Header>

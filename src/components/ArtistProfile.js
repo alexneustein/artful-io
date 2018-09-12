@@ -5,6 +5,23 @@ import { Container, Grid, Image, Header, Card } from 'semantic-ui-react'
 
 class ArtistProfile extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      artistId: this.props.match.params.id,
+      liked: false,
+      artistobj: {}
+    }
+  }
+
+  componentDidMount() {
+    const fetchPath = `http://localhost:3001/artists/${this.state.artistId}`
+    fetch(fetchPath)
+    .then(res => res.json())
+    .then(this.initialState)
+  }
+
+
   render() {
     return (
       <Container>
