@@ -8,6 +8,7 @@ import ArtistProfile from './ArtistProfile'
 import ArtistGallery from './ArtistGallery'
 import GalleryPost from './GalleryPost'
 import EditArtistForm from './EditArtistForm'
+import FileUpload from '../FileUpload'
 
 const API = "https://localhost:3000"
 
@@ -45,6 +46,7 @@ class AppContainer extends Component {
           <Route exact path='/artist' component={ArtistProfile}/>
           <Route exact path='/gallery' component={ArtistGallery}/>
           <Route exact path='/gallery_item' component={GalleryPost}/>
+          <Route exact path='/file_upload' component={FileUpload}/>
         </Switch>
       </div>
     );
