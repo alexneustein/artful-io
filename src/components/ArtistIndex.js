@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import ArtistCard from './ArtistCard'
-import { Pagination, Dimmer, Loader, Image, Segment, Container, Grid } from 'semantic-ui-react'
-import { Route, Switch } from 'react-router-dom'
-import LazyLoad from 'react-lazy-load';
+import { Pagination, Dimmer, Loader, Container, Grid } from 'semantic-ui-react'
 
 
 class ArtistIndex extends Component {

@@ -9,7 +9,6 @@
     "bluebird": "^3.5.2",
     "express": "^4.16.3",
     "file-type": "^9.0.0",
-    "firebase": "^5.4.2",
     "formsy-react": "^1.1.4",
     "formsy-semantic-ui-react": "^0.3.3",
     "fs": "0.0.1-security",
@@ -22,6 +21,7 @@
     "react-responsive-carousel": "^3.1.41",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-s3": "^1.3.1",
     "react-scripts": "1.1.5",
     "semantic-ui-css": "^2.3.3",
     "semantic-ui-react": "^0.82.3"

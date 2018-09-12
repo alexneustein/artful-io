@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PostCard from './PostCard'
-import { Pagination, Dimmer, Loader, Image, Container, Grid } from 'semantic-ui-react'
-import { Route, Switch } from 'react-router-dom'
+import { Pagination, Dimmer, Loader, Container, Grid } from 'semantic-ui-react'
 
 
 class ImageIndex extends Component {
