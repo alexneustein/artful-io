@@ -9,30 +9,10 @@ import ImageContainer from './ImageContainer'
 import ArtistContainer from './ArtistContainer'
 import GalleryPost from './GalleryPost'
 import EditArtistForm from './EditArtistForm'
-
-const API = "https://localhost:3001"
+import FileUpload from '../FileUpload'
 
 class AppContainer extends Component {
 
-  state = {
-    artists: []
-  }
-
-  componentDidMount() {
-    fetch(API)
-      .then(resp => resp.json())
-      .then(this.setInitialState)
-  }
-
-  setInitialState = (initialState) => {
-    this.setState({
-      artists: initialState,
-    });
-  }
-
-  displayArtists = (artists) => {
-    this.setState({artists: artists})
-  }
 
   render() {
     return (
@@ -47,6 +27,7 @@ class AppContainer extends Component {
           <Route exact path='/artist' component={ArtistProfile}/>
           <Route exact path='/gallery' component={ImageContainer}/>
           <Route exact path='/gallery_item' component={GalleryPost}/>
+          <Route exact path='/file_upload' component={FileUpload}/>
         </Switch>
       </div>
     );

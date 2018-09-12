@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { Form, Input, Button } from 'semantic-ui-react';
+import ReactS3 from 'react-s3';
 
-import axios from 'axios';
+const config = {
+    bucketName: 'artful-io',
+    dirName: 'photos',
+    region: 'sa-east-1',
+    accessKeyId: "AKIAJWKRQKJXRGOEGXQA",
+    secretAccessKey: "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",
+}
+
 
 class FileUpload extends Component {
   constructor () {
@@ -11,32 +19,28 @@ class FileUpload extends Component {
     };
   }
 
-  submitFile = (event) => {
-    event.preventDefault();
-    const formData = new FormData();
-    formData.append('file', this.state.file[0]);
-    axios.post(`/test-upload`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    }).then(response => {
-      // handle your response;
+  upload = (e) => {
+    const fileTarget = e.target.children[1].children[1].files[0]
+    e.preventDefault();
+    ReactS3.upload(fileTarget, config)
+    .then(data => {
+      console.log(data)
     }).catch(error => {
-      // handle your error
+      alert(error)
     });
   }
 
-  handleFileUpload = (event) => {
-    this.setState({file: event.target.files});
+  handleChooseFile = (e) => {
+    this.setState({file: e.target.files});
   }
 
   render () {
     return (
       // <div>Hello</div>
-      <Form onSubmit={this.submitFile}>
+      <Form onSubmit={this.upload}>
         <h1>I am the image uploader</h1>
-        <Input label='upload file' type='file' onChange={this.handleFileUpload} />
-        <Button secondary type='submit'>Send</Button>
+        <Input label='upload file' type='file' onChange={this.handleChooseFile} />
+        <Form.Button color='blue' content='Upload your picture' type='submit' />
       </Form>
     );
   }

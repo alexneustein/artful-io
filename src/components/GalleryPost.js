@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Image, Header, Comment, Card, Icon } from 'semantic-ui-react'
+import { Container, Image, Header, Card, Icon } from 'semantic-ui-react'
 import CommentContainer from './CommentContainer'
 
 class GalleryPost extends Component {
@@ -27,7 +27,7 @@ class GalleryPost extends Component {
     const dateMonths = ["","January","February","March","April","May","June","July","August","September","November","December"]
     if (!!datestring) {
       let dateArray = datestring.split('-');
-      const thestring = dateMonths[parseInt(dateArray[1])] + ", " + dateArray[0]
+      const thestring = dateMonths[parseInt(dateArray[1])] + ", " + dateArray[0];
       return thestring
     }
   }
