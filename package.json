@@ -15,6 +15,11 @@
     "multiparty": "^4.2.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+<<<<<<< HEAD
+=======
+    "react-firebase": "^2.2.8",
+    "react-lazy-load": "^3.0.13",
+>>>>>>> 19b18d576d2cca50737e23d504dafe445a047d20
     "react-redux-firebase": "^2.1.8",
     "react-responsive-carousel": "^3.1.41",
     "react-router": "^4.3.1",
