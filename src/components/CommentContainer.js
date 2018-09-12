@@ -10,7 +10,7 @@ class CommentContainer extends Component {
     return (
       <Container >
         <Header as='h3'> Post Comments:</Header>
-        <Comment.Group size='medium'>
+        <Comment.Group size='small'>
           { this.props.commentArray.map(comment => {
             return <PostComment comment={comment} />
           }) }
