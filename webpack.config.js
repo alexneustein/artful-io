@@ -1,25 +1,24 @@
-{
-    "mode": "development",
-    "entry": "src/index.js",
-    "output": {
-        "path": __dirname+'/photos',
-        "filename": "[name].[chunkhash:8].js"
-    },
-    "module": {
-        "rules": [
-            {
-                "test": /\.(js|jsx)$/,
-                "exclude": /node_modules/,
-                "use": {
-                    "loader": "babel-loader",
-                    "options": {
-                        "presets": [
-                            "env",
-                            "react"
-                        ]
-                    }
-                }
-            }
-        ]
-    }
-}
+var webpack = require('webpack');
+var path = require('path');
+
+var BUILD_DIR = path.resolve(__dirname, 'public');
+var APP_DIR = path.resolve(__dirname, 'src');
+
+var config = {
+  entry: APP_DIR + '/index.jsx',
+  output: {
+      path: BUILD_DIR,
+      filename: 'bundle.js'
+  },
+  module : {
+      loaders : [
+          {
+              test : /\.jsx?/,
+              include : APP_DIR,
+              loader : 'babel'
+          }
+      ]
+  }
+};
+
+module.exports = config;

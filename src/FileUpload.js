@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, Button } from 'semantic-ui-react';
-import S3FileUpload from 'react-s3';
-import { uploadFile } from 'react-s3';
+import cloudinary from 'cloudinary-core';
 
 const config = {
     bucketName: 'artful-io',
@@ -13,35 +12,25 @@ const config = {
 
 
 class FileUpload extends Component {
-  constructor () {
-    super();
-    this.state = {
-      file: null
-    };
-  }
+  // constructor () {
+  //   super();
+  //   this.state = {
+  //     file: null
+  //   };
+  // }
+
 
   // manageUpload = (e) => {
   //   const fileTarget = e.target.children[1].children[1].files[0]
-  //   e.preventDefault();
-  //   S3FileUpload.upload(fileTarget, config)
-  //   .then(data => {
-  //     console.log(data)
-  //   }).catch(error => {
-  //     alert(error)
-  //   });
+  //   S3FileUpload
+  //   .uploadFile(fileTarget, config)
+  //     .then((data) => console.log(data))
+  //     .catch((error) => console.log(error))
   // }
-
-  manageUpload = (e) => {
-    const fileTarget = e.target.children[1].children[1].files[0]
-    S3FileUpload
-    .uploadFile(fileTarget, config)
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error))
-  }
-
-  handleChooseFile = (e) => {
-    this.setState({file: e.target.files});
-  }
+  //
+  // handleChooseFile = (e) => {
+  //   this.setState({file: e.target.files});
+  // }
 
   render () {
     return (
