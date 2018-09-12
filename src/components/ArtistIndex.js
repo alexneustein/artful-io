@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import PostCard from './PostCard'
-import { Container, Grid } from 'semantic-ui-react'
+import ArtistCard from './ArtistCard'
+import { Dimmer, Loader, Image, Segment, Container, Grid } from 'semantic-ui-react'
 import { Route, Switch } from 'react-router-dom'
 
 
 class ArtistIndex extends Component {
   state = {
-    imageIndex: []
+    loading: true,
+    artistIndex: []
   }
 
   componentDidMount() {
@@ -17,19 +18,30 @@ class ArtistIndex extends Component {
 
   initialState = (resData) => {
     this.setState({
-      imageIndex: resData,
+      artistIndex: resData,
+      loading: false
     })
   }
 
 
   render() {
+    if(this.state.loading) {
+      return (
+        <Container>
+          <Dimmer active inverted>
+            <Loader>Loading Artists</Loader>
+          </Dimmer>
+        </Container>
+      )
+    }
+
     return (
       <Container>
         <h5>All Artists</h5>
         <Grid relaxed columns={5}>
-          { this.state.imageIndex.map(image => {
+          { this.state.artistIndex.map(artist => {
             return (<Grid.Column>
-            <PostCard key={image.id} image={image}/>
+            <ArtistCard key={artist.id} artist={artist}/>
             </Grid.Column>)
           }) }
         </Grid>

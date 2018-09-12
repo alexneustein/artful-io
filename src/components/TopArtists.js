@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import ArtistCard from './ArtistCard'
-import { Grid, Container } from 'semantic-ui-react';
+import { Dimmer, Loader, Grid, Container } from 'semantic-ui-react';
 
 
 class TopArtists extends Component {
 
   state = {
+    loading: true,
     topArtists: []
   }
 
@@ -18,10 +19,20 @@ class TopArtists extends Component {
   initialState = (resData) => {
     this.setState({
       topArtists: resData,
+      loading: false
     })
   }
 
   render() {
+    if(this.state.loading) {
+      return (
+        <Container>
+          <Dimmer active inverted>
+            <Loader>Loading Top Artists</Loader>
+          </Dimmer>
+        </Container>
+      )
+    }
     return (
       <Container>
         <Grid relaxed columns={3}>

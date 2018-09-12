@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PostCard from './PostCard'
-import { Container, Grid } from 'semantic-ui-react'
+import { Dimmer, Loader, Image, Container, Grid } from 'semantic-ui-react'
 import { Route, Switch } from 'react-router-dom'
 
 
 class ImageIndex extends Component {
   state = {
+    loading: true,
     imageIndex: []
   }
 
@@ -18,11 +19,21 @@ class ImageIndex extends Component {
   initialState = (resData) => {
     this.setState({
       imageIndex: resData,
+      loading: false
     })
   }
 
 
   render() {
+    if(this.state.loading) {
+      return (
+        <Container>
+          <Dimmer active inverted>
+            <Loader>Loading Images</Loader>
+          </Dimmer>
+        </Container>
+      )
+    }
     return (
       <Container>
         <h5>All Images</h5>
