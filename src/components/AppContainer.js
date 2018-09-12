@@ -6,6 +6,7 @@ import LogInForm from './LogInForm'
 import SignUpForm from './SignUpForm'
 import ArtistProfile from './ArtistProfile'
 import ImageContainer from './ImageContainer'
+import ArtistContainer from './ArtistContainer'
 import GalleryPost from './GalleryPost'
 import EditArtistForm from './EditArtistForm'
 

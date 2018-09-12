@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
-
+import dateFormatter from "./helpers";
 
 class PostCard extends Component {
-
-  dateFormatter = (datestring) => {
-    const dateMonths = ["","January","February","March","April","May","June","July","August","September","October","November","December"]
-    if (!!datestring) {
-      let dateArray = datestring.split('-');
-      const thestring = dateMonths[parseInt(dateArray[1])] + ", " + dateArray[0]
-      return thestring
-    }
-  }
 
   render() {
     return (
       <div>
-        <Card color='red'>
+        <Card color='blue'>
           <Image src={this.props.image.url} height />
           <Card.Content>
             <Card.Header>{this.props.image.title}</Card.Header>
             <Card.Meta>
-              <span className='date'>Posted in {this.dateFormatter(this.props.image.image_date)}</span>
+              <span className='date'>Posted in {dateFormatter(this.props.image.image_date)}</span>
             </Card.Meta>
             <Card.Description>by {this.props.image.artist.name_first} {this.props.image.artist}</Card.Description>
           </Card.Content>
