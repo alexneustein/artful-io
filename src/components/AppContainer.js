@@ -5,7 +5,7 @@ import TopContainer from './TopContainer'
 import LogInForm from './LogInForm'
 import SignUpForm from './SignUpForm'
 import ArtistProfile from './ArtistProfile'
-import ArtistGallery from './ArtistGallery'
+import ImageContainer from './ImageContainer'
 import GalleryPost from './GalleryPost'
 import EditArtistForm from './EditArtistForm'
 
@@ -43,7 +43,7 @@ class AppContainer extends Component {
           <Route exact path='/signup' component={SignUpForm}/>
           <Route exact path='/edit_artist' component={EditArtistForm}/>
           <Route exact path='/artist' component={ArtistProfile}/>
-          <Route exact path='/gallery' component={ArtistGallery}/>
+          <Route exact path='/gallery' component={ImageContainer}/>
           <Route exact path='/gallery_item' component={GalleryPost}/>
         </Switch>
       </div>

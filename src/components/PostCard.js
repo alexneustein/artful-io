@@ -4,22 +4,31 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 
 class PostCard extends Component {
 
+  dateFormatter = (datestring) => {
+    const dateMonths = ["","January","February","March","April","May","June","July","August","September","October","November","December"]
+    if (!!datestring) {
+      let dateArray = datestring.split('-');
+      const thestring = dateMonths[parseInt(dateArray[1])] + ", " + dateArray[0]
+      return thestring
+    }
+  }
+
   render() {
     return (
       <div>
         <Card color='red'>
-          <Image src='https://picsum.photos/200/300/?random' height />
+          <Image src={this.props.image.url} height />
           <Card.Content>
-            <Card.Header>Top Images</Card.Header>
+            <Card.Header>{this.props.image.title}</Card.Header>
             <Card.Meta>
-              <span className='date'>Posted in 2015</span>
+              <span className='date'>Posted in {this.dateFormatter(this.props.image.image_date)}</span>
             </Card.Meta>
-            <Card.Description>This are the most voted posts</Card.Description>
+            <Card.Description>by {this.props.image.artist.name_first} {this.props.image.artist.name_last}</Card.Description>
           </Card.Content>
           <Card.Content extra>
             <a>
               <Icon name='like' />
-              22 Likes
+              {this.props.image.likes} Likes
             </a>
           </Card.Content>
         </Card>
