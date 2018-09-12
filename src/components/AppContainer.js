@@ -10,29 +10,8 @@ import GalleryPost from './GalleryPost'
 import EditArtistForm from './EditArtistForm'
 import FileUpload from '../FileUpload'
 
-const API = "https://localhost:3000"
 
 class AppContainer extends Component {
-
-  state = {
-    artists: []
-  }
-
-  componentDidMount() {
-    fetch(API)
-      .then(resp => resp.json())
-      .then(this.setInitialState)
-  }
-
-  setInitialState = (initialState) => {
-    this.setState({
-      artists: initialState,
-    });
-  }
-
-  displayArtists = (artists) => {
-    this.setState({artists: artists})
-  }
 
   render() {
     return (

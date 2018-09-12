@@ -8,8 +8,8 @@ const multiparty = require('multiparty');
 
 // configure the keys for accessing AWS
 AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  accessKeyId: "AKIAJWKRQKJXRGOEGXQA",
+  secretAccessKey: "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"
 });
 
 // configure AWS to work with promises
@@ -23,7 +23,7 @@ const uploadFile = (buffer, name, type) => {
   const params = {
     ACL: 'public-read',
     Body: buffer,
-    Bucket: process.env.DANIK_S3_BUCKET,
+    Bucket: 'artful-io',
     ContentType: type.mime,
     Key: `${name}.${type.ext}`
   };
@@ -31,7 +31,7 @@ const uploadFile = (buffer, name, type) => {
 };
 
 // Define POST route
-app.post('/test-upload', (request, response) => {
+app.post('https://artful-io.s3.amazonaws.com/', (request, response) => {
   const form = new multiparty.Form();
     form.parse(request, async (error, fields, files) => {
       if (error) throw new Error(error);
