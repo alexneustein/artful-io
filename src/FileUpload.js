@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Input, Button } from 'semantic-ui-react';
-import ReactS3 from 'react-s3';
+import S3FileUpload from 'react-s3';
+import { uploadFile } from 'react-s3';
 
 const config = {
     bucketName: 'artful-io',
@@ -19,15 +20,23 @@ class FileUpload extends Component {
     };
   }
 
-  upload = (e) => {
+  // manageUpload = (e) => {
+  //   const fileTarget = e.target.children[1].children[1].files[0]
+  //   e.preventDefault();
+  //   S3FileUpload.upload(fileTarget, config)
+  //   .then(data => {
+  //     console.log(data)
+  //   }).catch(error => {
+  //     alert(error)
+  //   });
+  // }
+
+  manageUpload = (e) => {
     const fileTarget = e.target.children[1].children[1].files[0]
-    e.preventDefault();
-    ReactS3.upload(fileTarget, config)
-    .then(data => {
-      console.log(data)
-    }).catch(error => {
-      alert(error)
-    });
+    S3FileUpload
+    .uploadFile(fileTarget, config)
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error))
   }
 
   handleChooseFile = (e) => {
@@ -37,7 +46,7 @@ class FileUpload extends Component {
   render () {
     return (
       // <div>Hello</div>
-      <Form onSubmit={this.upload}>
+      <Form onSubmit={this.manageUpload}>
         <h1>I am the image uploader</h1>
         <Input label='upload file' type='file' onChange={this.handleChooseFile} />
         <Form.Button color='blue' content='Upload your picture' type='submit' />
