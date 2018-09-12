@@ -12,7 +12,7 @@ class GalleryPost extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/images/3')
+    fetch('http://localhost:3001/images/3948')
     .then(res => res.json())
     .then(this.initialState)
   }
