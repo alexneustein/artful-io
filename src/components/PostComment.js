@@ -17,12 +17,21 @@ class PostComment extends Component {
         liked: true,
         likes: this.props.comment.likes += 1
       })
+      fetch(`http://localhost:3001/comments/${this.props.comment.id}/addlike`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'}
+      })
     } else {
       this.setState({
         liked: false,
         likes: this.props.comment.likes -= 1
       })
+      fetch(`http://localhost:3001/comments/${this.props.comment.id}/unlike`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'}
+      })
     }
+
   }
 
   makeNiceDate = (uglydate) => {
