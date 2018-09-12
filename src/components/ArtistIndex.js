@@ -29,7 +29,6 @@ handlePage = (e, { activePage }) => {
   let gotopage = { activePage }
   let pagenum = gotopage.activePage
   let pagestring = pagenum.toString()
-  // pagestring = `"` + pagestring + `"`
   this.setState({
     loading: true
   })
@@ -38,7 +37,6 @@ handlePage = (e, { activePage }) => {
   fetch(url)
   .then(res => res.json())
   .then(this.initialState)
-
 }
 
   render() {

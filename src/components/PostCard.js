@@ -14,7 +14,7 @@ class PostCard extends Component {
             <Card.Meta>
               <span className='date'>Posted in {dateFormatter(this.props.image.image_date)}</span>
             </Card.Meta>
-            <Card.Description>by {this.props.image.artist.name_first} {this.props.image.artist}</Card.Description>
+            <Card.Description>by {this.props.artist}</Card.Description>
           </Card.Content>
           <Card.Content extra>
             <a>
