@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PostCard from './PostCard'
-import { Pagination, Dimmer, Loader, Container, Grid } from 'semantic-ui-react'
+import { Divider, Pagination, Dimmer, Loader, Container, Grid } from 'semantic-ui-react'
 
 
 class ImageIndex extends Component {
@@ -19,7 +19,8 @@ class ImageIndex extends Component {
   initialState = (resData) => {
     this.setState({
       imageIndex: resData,
-      loading: false
+      loading: false,
+      activePage: resData.page
     })
   }
 
@@ -49,8 +50,11 @@ class ImageIndex extends Component {
     }
     return (
       <Container>
-        <h5>All Images</h5>
-          <Pagination onPageChange={this.handlePage} size='mini' siblingRange="6" defaultActivePage={this.state.imageIndex.page} totalPages={this.state.imageIndex.pages} />
+          <Divider hidden />
+          <Container textAlign='center'>
+          <Pagination  onPageChange={this.handlePage} size='mini' siblingRange="6" defaultActivePage={this.state.imageIndex.page} totalPages={this.state.imageIndex.pages} />
+          </Container>
+            <Divider hidden />
         <Grid relaxed columns={5}>
           { this.state.imageIndex.images.map(image => {
             return (<Grid.Column>
@@ -58,7 +62,13 @@ class ImageIndex extends Component {
             </Grid.Column>)
           }) }
         </Grid>
-        <Pagination onPageChange={this.handlePage} size='mini' siblingRange="6" defaultActivePage={this.state.imageIndex.page} totalPages={this.state.imageIndex.pages} />
+
+        <Divider hidden />
+
+        <Container textAlign='center'>
+        <Pagination  onPageChange={this.handlePage} size='mini' siblingRange="6" defaultActivePage={this.state.imageIndex.page} totalPages={this.state.imageIndex.pages} />
+        </Container>
+        <Divider hidden />
 
       </Container>
     );
