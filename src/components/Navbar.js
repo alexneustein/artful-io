@@ -3,10 +3,31 @@ import { Button, Menu, Header, Icon, Input, Confirm, Label, Container, Segment, 
 import { Form } from 'formsy-semantic-ui-react'
 
 class Navbar extends Component {
-  state = { open: false }
+  state = {
+    open: false,
+    id: "",
+    name_first: "",
+    name_last: "",
+    username: "",
+    password: "",
+    about: "",
+    photo: null,
+    animation: false,
+    digital_arts: false,
+    graphic_design: false,
+    hand_crafts: false,
+    illustration: false,
+    film: false,
+    painting: false,
+    photography: false,
+    sculpture: false,
+    visual_arts: false
+  }
 
   open = () => this.setState({ open: true })
   close = () => this.setState({ open: false })
+
+  onValidSubmit = (formData) => console.log(JSON.stringify(formData))
 
   render() {
     const errorLabel = <Label color="red" pointing="left"/>;
@@ -45,7 +66,6 @@ class Navbar extends Component {
                       <Segment>
                         <Container style={ styles.root }>
                           <h1>This is the Sign-up Form</h1>
-
                           <Form
                             ref={ ref => this.form = ref }
                             onValidSubmit={ this.onValidSubmit }
@@ -143,52 +163,52 @@ class Navbar extends Component {
                                   isDefaultRequiredValue: 'We need to know more about you',
                                 }}
                               />
-
-                              <h5> Artist Area of Experties: </h5>
-                              <p>Check all that apply</p>
-                              <Form.Group>
-                                <Form.Checkbox
-                                  name="Animation"
-                                  label="Animation"
-                                />
-                                <Form.Checkbox
-                                  name="DigitalArts"
-                                  label="Digital Arts"
-                                />
-                                <Form.Checkbox
-                                  name="Graphic Design"
-                                  label="Graphic Design"
-                                />
-                                <Form.Checkbox
-                                  name="HandCrafts"
-                                  label="Hand Crafts"
-                                />
-                                <Form.Checkbox
-                                  name="Ilustration"
-                                  label="Ilustration"
-                                />
-                                <Form.Checkbox
-                                  name="Film"
-                                  label="Film"
-                                />
-                                <Form.Checkbox
-                                  name="Painting"
-                                  label="Painting"
-                                />
-                                <Form.Checkbox
-                                  name="Photography"
-                                  label="Photography"
-                                />
-                                <Form.Checkbox
-                                  name="Sculpture"
-                                  label="Sculpture"
-                                />
-                                <Form.Checkbox
-                                  name="VisualArts"
-                                  label="Visual Arts"
-                                />
-                              </Form.Group>
-
+                              <Segment>
+                                <h5> Artist Area of Experties: </h5>
+                                <p>Check all that apply</p>
+                                <Form.Group>
+                                  <Form.Checkbox
+                                    name="Animation"
+                                    label="Animation"
+                                  />
+                                  <Form.Checkbox
+                                    name="DigitalArts"
+                                    label="Digital Arts"
+                                  />
+                                  <Form.Checkbox
+                                    name="Graphic Design"
+                                    label="Graphic Design"
+                                  />
+                                  <Form.Checkbox
+                                    name="HandCrafts"
+                                    label="Hand Crafts"
+                                  />
+                                  <Form.Checkbox
+                                    name="Ilustration"
+                                    label="Ilustration"
+                                  />
+                                  <Form.Checkbox
+                                    name="Film"
+                                    label="Film"
+                                  />
+                                  <Form.Checkbox
+                                    name="Painting"
+                                    label="Painting"
+                                  />
+                                  <Form.Checkbox
+                                    name="Photography"
+                                    label="Photography"
+                                  />
+                                  <Form.Checkbox
+                                    name="Sculpture"
+                                    label="Sculpture"
+                                  />
+                                  <Form.Checkbox
+                                    name="VisualArts"
+                                    label="Visual Arts"
+                                  />
+                                </Form.Group>
+                              </Segment>
                               <Form.Group>
                                 <Form.Button content="Submit" color="green"/>
                                 <Form.Button type="button" content="Reset" onClick={ () => this.form.reset() }/>

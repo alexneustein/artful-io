@@ -14,8 +14,7 @@ const styles = {
 }
 
 export default class SignUpForm extends Component {
-  onValidSubmit = (formData) => alert(JSON.stringify(formData));   // eslint-disable-line
-
+  onValidSubmit = (formData) => alert(JSON.stringify(formData)).console.log(formData)
   render() {
 
     const errorLabel = <Label color="red" pointing="left"/>;
