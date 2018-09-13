@@ -180,29 +180,29 @@ class Navbar extends Component {
                                 <p>Check all that apply</p>
                                 <Form.Group >
                                   <Form.Checkbox
-                                    name="Animation"
+                                    name="animation"
                                     label="Animation"
                                   />
                                   <Form.Checkbox
-                                    name="DigitalArts"
+                                    name="digitalarts"
                                     label="Digital Arts"
                                   />
                                   <Form.Checkbox
-                                    name="Graphic Design"
+                                    name="graphicdesign"
                                     label="Graphic Design"
                                   />
                                   <Form.Checkbox
-                                    name="HandCrafts"
+                                    name="handcrafts"
                                     label="Hand Crafts"
                                   />
                                   <Form.Checkbox
-                                    name="Ilustration"
+                                    name="ilustration"
                                     label="Ilustration"
                                   />
                                 </Form.Group>
                                 <Form.Group>
                                   <Form.Checkbox
-                                    name="Film"
+                                    name="film"
                                     label="Film"
                                   />
                                   <Form.Checkbox
@@ -210,15 +210,15 @@ class Navbar extends Component {
                                     label="Painting"
                                   />
                                   <Form.Checkbox
-                                    name="Photography"
+                                    name="photography"
                                     label="Photography"
                                   />
                                   <Form.Checkbox
-                                    name="Sculpture"
+                                    name="sculpture"
                                     label="Sculpture"
                                   />
                                   <Form.Checkbox
-                                    name="VisualArts"
+                                    name="visualArts"
                                     label="Visual Arts"
                                   />
                                 </Form.Group>
