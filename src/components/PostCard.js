@@ -6,7 +6,7 @@ class PostCard extends Component {
 
   render() {
 
-    const expandlink = 'images/' + this.props.image.id + '/'
+    const expandlink = '/images/' + this.props.image.id + '/'
 
     return (
       <div>
