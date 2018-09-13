@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { List, Divider, Container, Grid, Image, Header, Card, Icon } from 'semantic-ui-react'
 import dateFormatter from "./helpers";
 import PostCard from './PostCard'
+import NewPostForm from './NewPostForm'
 
 
 class ArtistProfile extends Component {
@@ -55,6 +56,7 @@ class ArtistProfile extends Component {
   render() {
     return (
       <Container>
+        <NewPostForm />
         <Divider hidden />
         <Grid relaxed>
           <Grid.Column width={8}>
