@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ArtistCard from './ArtistCard'
-import { Pagination, Dimmer, Loader, Container, Grid } from 'semantic-ui-react'
+import { Divider, Pagination, Dimmer, Loader, Container, Grid } from 'semantic-ui-react'
 
 
 class ArtistIndex extends Component {
@@ -50,8 +50,14 @@ handlePage = (e, { activePage }) => {
 
     return (
       <Container>
-        <h5>All Artists</h5>
+          <Divider hidden />
+            <Container textAlign='center'>
+
         <Pagination onPageChange={this.handlePage} size='mini' siblingRange="6" defaultActivePage={this.state.artistIndex.page} totalPages={this.state.artistIndex.pages} />
+        </Container>
+
+          <Divider hidden />
+
         <Grid relaxed columns={5}>
           { this.state.artistIndex.artists.map(artist => {
             return (<Grid.Column>
@@ -59,6 +65,14 @@ handlePage = (e, { activePage }) => {
             </Grid.Column>)
           }) }
         </Grid>
+        <Divider hidden />
+          <Container textAlign='center'>
+
+          <Pagination onPageChange={this.handlePage} size='mini' siblingRange="6" defaultActivePage={this.state.artistIndex.page} totalPages={this.state.artistIndex.pages} />
+          </Container>
+
+            <Divider hidden />
+
       </Container>
     );
   }
