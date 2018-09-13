@@ -27,9 +27,27 @@ class Navbar extends Component {
   open = () => this.setState({ open: true })
   close = () => this.setState({ open: false })
 
-  onValidSubmit = (formData) => console.log(JSON.stringify(formData))
+  onValidSubmit = (formData) => {
+    const newArtist = JSON.stringify(formData)
+    this.setState({
+      newArtist 
+    });
+  }
+
+
+  handleLike = () => {
+    if (this.state.liked === false) {
+      this.setState({
+        liked: true,
+        imageobj: {...this.state.imageobj, likes: this.state.imageobj.likes + 1}
+      })
+      fetch(`http://localhost:3001/images/${this.state.imageobj.id}/addlike`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'}
+      })
 
   render() {
+    console.log("State", this.state);
     const errorLabel = <Label color="red" pointing="left"/>;
     const styles = {
       root: {
