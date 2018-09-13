@@ -12,16 +12,16 @@ class Navbar extends Component {
     password: "",
     about: "",
     photo: null,
-    animation: false,
-    digital_arts: false,
-    graphic_design: false,
-    hand_crafts: false,
-    illustration: false,
-    film: false,
-    painting: false,
-    photography: false,
-    sculpture: false,
-    visual_arts: false
+    animation: null,
+    digital_arts: null,
+    graphic_design: null,
+    hand_crafts: null,
+    illustration: null,
+    film: null,
+    painting: null,
+    photography: null,
+    sculpture: null,
+    visual_arts: null
   }
 
   open = () => this.setState({ open: true })
@@ -30,21 +30,15 @@ class Navbar extends Component {
   onValidSubmit = (formData) => {
     const newArtist = JSON.stringify(formData)
     this.setState({
-      newArtist 
-    });
+      ...formData
+    }, () => console.log(formData))
+    fetch('http://localhost:3001/artists/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: newArtist
+    })
   }
 
-
-  handleLike = () => {
-    if (this.state.liked === false) {
-      this.setState({
-        liked: true,
-        imageobj: {...this.state.imageobj, likes: this.state.imageobj.likes + 1}
-      })
-      fetch(`http://localhost:3001/images/${this.state.imageobj.id}/addlike`, {
-        method: 'PATCH',
-        headers: {'Content-Type': 'application/json'}
-      })
 
   render() {
     console.log("State", this.state);
@@ -149,10 +143,10 @@ class Navbar extends Component {
                                   required
                                   hided
                                   // eslint-disable-next-line
-                                  validations={"minLength:8", "maxLength:16"}
+                                  validations={{minLength: 8}}
                                   errorLabel={ errorLabel }
                                   validationErrors={{
-                                    isEmail: 'That is not a valid password',
+                                    minLength: 'The password must be at least 8 characters long',
                                     isDefaultRequiredValue: 'Password is Required',
                                   }}
                                 />
@@ -162,10 +156,10 @@ class Navbar extends Component {
                                   placeholder="Enter again your Password"
                                   required
                                   // eslint-disable-next-line
-                                  validations={"equalsField:password", "minLength:8", "maxLength:16"}
+                                  validations={{equalsField: "Password"}}
                                   errorLabel={ <div style={ styles.customErrorLabel }/> }
                                   validationErrors={{
-                                    isEmail: 'That is not a valid password',
+                                    equalsField: 'Passwords are not the same',
                                     isDefaultRequiredValue: 'Password is Required',
                                   }}
                                 />
@@ -184,7 +178,7 @@ class Navbar extends Component {
                               <Segment>
                                 <h5> Artist Area of Experties: </h5>
                                 <p>Check all that apply</p>
-                                <Form.Group>
+                                <Form.Group >
                                   <Form.Checkbox
                                     name="Animation"
                                     label="Animation"
@@ -205,6 +199,8 @@ class Navbar extends Component {
                                     name="Ilustration"
                                     label="Ilustration"
                                   />
+                                </Form.Group>
+                                <Form.Group>
                                   <Form.Checkbox
                                     name="Film"
                                     label="Film"
