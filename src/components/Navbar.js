@@ -31,7 +31,7 @@ class Navbar extends Component {
     const newArtist = JSON.stringify(formData)
     this.setState({
       ...formData
-    }, () => console.log(formData))
+    })
     fetch('http://localhost:3001/artists/', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -77,7 +77,7 @@ class Navbar extends Component {
                     <Modal.Description>
                       <Segment>
                         <Container style={ styles.root }>
-                          <h1>This is the Sign-up Form</h1>
+                          <h1>Welcome to artfol.io</h1>
                           <Form
                             ref={ ref => this.form = ref }
                             onValidSubmit={ this.onValidSubmit }

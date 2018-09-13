@@ -23,7 +23,7 @@ export default class SignUpForm extends Component {
     return (
       <Segment>
         <Container style={ styles.root }>
-          <h1>This is the Sign-up Form</h1>
+          <h1>Welcome to artful.io</h1>
 
           <Form
             ref={ ref => this.form = ref }
