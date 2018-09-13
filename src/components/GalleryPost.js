@@ -10,7 +10,7 @@ class GalleryPost extends Component {
     this.state = {
       imageId: this.props.match.params.id,
       liked: false,
-      imageobj: { artist: { name_first: ""} },
+      imageobj: {},
       artistobj: {}
     }
   }
@@ -61,7 +61,7 @@ class GalleryPost extends Component {
         <Header as='h2'>Image Detail</Header>
         <Image src={this.state.imageobj.url} size='large' rounded />
         <Header as='h3'>Title: {this.state.imageobj.title}</Header>
-          <Header as='h4'>By {this.state.imageobj.artist.name_first} {this.state.artistobj.name_last}</Header>
+          <Header as='h4'>By {this.state.artistobj.name_first} {this.state.artistobj.name_last}</Header>
 
           <Card.Content extra>
             <a onClick={this.handleLike}>
