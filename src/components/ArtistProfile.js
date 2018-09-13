@@ -56,7 +56,7 @@ class ArtistProfile extends Component {
   render() {
     return (
       <Container>
-        <NewPostForm />
+        <NewPostForm artistId={this.state.artistId}/>
         <Divider hidden />
         <Grid relaxed>
           <Grid.Column width={8}>

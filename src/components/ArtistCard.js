@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
 import dateFormatter from "./helpers";
-import NewPostForm from './NewPostForm'
 
 class ArtistCard extends Component {
 
@@ -26,7 +25,6 @@ class ArtistCard extends Component {
               {this.props.artist.likes} Likes
             </a>
           </Card.Content>
-          <NewPostForm />
         </Card>
       </div>
     );

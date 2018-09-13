@@ -14,24 +14,28 @@ const styles = {
 }
 
 export default class NewPostForm extends Component {
+  state = {
+    open: false
+  }
+
+  open = () => this.setState({ open: true })
+  close = () => this.setState({ open: false })
+
 
   onValidSubmit = (formData) => {
-    const newPost = JSON.stringify(formData)
-    console.log(newPost)
-    // this.setState({
-    //   ...formData
-    // }, () => console.log(formData))
+
+    const body = {...formData, artist_id: this.props.artistId}
+
     fetch('http://localhost:3001/images/', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: newPost
+      body: JSON.stringify(body)
     })
   }
   render() {
 
     const errorLabel = <Label color="red" pointing="left"/>;
 
-    console.log('State', this.state);
     return (
       <Segment floated='right'>
         <Modal trigger={<Button basic color='blue' >Create New Post</Button>}>
@@ -75,7 +79,10 @@ export default class NewPostForm extends Component {
                       />
                     </Form.Group>
                     <Form.Group>
-                      <Form.Button content="Submit" color="green"/>
+                      <Form.Button content="Submit" color="green"
+                      onClick={this.close}
+
+                      />
                       <Form.Button type="button" content="Reset" onClick={ () => this.form.reset() }/>
                     </Form.Group>
                   </Form>
