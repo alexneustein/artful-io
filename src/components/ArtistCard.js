@@ -7,7 +7,7 @@ class ArtistCard extends Component {
   render() {
     const avatars =  ["download-1.jpg", "download-1.png", "download-2.jpg", "download-2.png", "download-3.jpg", "download-3.png", "download-4.jpg", "download-4.png", "download-5.jpg", "download-5.png", "download-6.jpg", "download-6.png", "download-7.jpg", "download-7.png", "download.jpg", "download.png"]
 
-    const expandlink = 'artists/' + this.props.artist.id + '/'
+    const expandlink = '/artists/' + this.props.artist.id + '/'
 
     return (
       <div>
