@@ -14,7 +14,7 @@ class ArtistCard extends Component {
         <Card color='red'>
           <a href={expandlink}><Image src={'/avatar/' + avatars[Math.floor(Math.random() * ((avatars.length)-1))]} height/> </a>
           <Card.Content>
-            <Card.Header>{this.props.artist.name_first} {this.props.artist.name_last}</Card.Header>
+            <Card.Header><a href={expandlink}>{this.props.artist.name_first} {this.props.artist.name_last}</a></Card.Header>
             <Card.Meta>
               <span className='date'>Joined in {dateFormatter(this.props.artist.created_at)}</span>
             </Card.Meta>

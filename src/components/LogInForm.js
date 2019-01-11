@@ -46,7 +46,7 @@ export default class LogInForm extends Component {
                         }}
                       />
                       <Form.Input
-                        name="Password"
+                        name="password"
                         label="Password"
                         placeholder="Enter Password"
                         required

@@ -31,7 +31,7 @@ class Navbar extends Component {
     const newArtist = JSON.stringify(formData)
     this.setState({
       ...formData
-    }, () => console.log(formData))
+    })
     fetch('http://localhost:3001/artists/', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -77,7 +77,7 @@ class Navbar extends Component {
                     <Modal.Description>
                       <Segment>
                         <Container style={ styles.root }>
-                          <h1>This is the Sign-up Form</h1>
+                          <h1>Welcome to artfol.io</h1>
                           <Form
                             ref={ ref => this.form = ref }
                             onValidSubmit={ this.onValidSubmit }
@@ -85,7 +85,7 @@ class Navbar extends Component {
                               <Form.Group widths="equal">
                                 <Form.Input
                                   required
-                                  name="firstName"
+                                  name="name_first"
                                   label="First name"
                                   placeholder="First name"
                                   validations="isWords"
@@ -96,7 +96,7 @@ class Navbar extends Component {
                                   }}
                                 />
                                 <Form.Input
-                                  name="lastName"
+                                  name="name_last"
                                   label="Last name"
                                   placeholder="Last name"
                                   required
@@ -129,7 +129,7 @@ class Navbar extends Component {
                                   placeholder="Username"
                                   required
                                   // eslint-disable-next-line
-                                  validations={"isWords", "minLength:6", "maxLength:16"}
+                                  validations={"isWords", {minLength:6}}
                                   errorLabel={ errorLabel }
                                   validationErrors={{
                                     isWords: 'No numbers or special characters allowed',
@@ -137,7 +137,7 @@ class Navbar extends Component {
                                   }}
                                 />
                                 <Form.Input
-                                  name="Password"
+                                  name="password"
                                   label="Password"
                                   placeholder="Enter Password"
                                   required
@@ -156,7 +156,7 @@ class Navbar extends Component {
                                   placeholder="Enter again your Password"
                                   required
                                   // eslint-disable-next-line
-                                  validations={{equalsField: "Password"}}
+                                  validations={{equalsField: "password"}}
                                   errorLabel={ <div style={ styles.customErrorLabel }/> }
                                   validationErrors={{
                                     equalsField: 'Passwords are not the same',
@@ -166,7 +166,7 @@ class Navbar extends Component {
                               </Form.Group>
 
                               <Form.TextArea
-                                name="Biography"
+                                name="about"
                                 label="Biography"
                                 placeholder="Tell us your story..."
                                 required
@@ -224,7 +224,7 @@ class Navbar extends Component {
                                 </Form.Group>
                               </Segment>
                               <Form.Group>
-                                <Form.Button content="Submit" color="green"/>
+                                <Form.Button content="Submit" color="green" open={this.state.open} onClick={this.close}/>
                                 <Form.Button type="button" content="Reset" onClick={ () => this.form.reset() }/>
                               </Form.Group>
                             </Form>
@@ -249,11 +249,8 @@ class Navbar extends Component {
                               label="Username"
                               placeholder="Username"
                               required
-                              // eslint-disable-next-line
-                              validations={"isWords", "minLength:6", "maxLength:16"}
                               errorLabel={ errorLabel }
                               validationErrors={{
-                                isWords: 'No numbers or special characters allowed',
                                 isDefaultRequiredValue: 'Username is Required',
                               }}
                             />
@@ -262,18 +259,14 @@ class Navbar extends Component {
                               label="Password"
                               placeholder="Enter Password"
                               required
-                              hided
-                              // eslint-disable-next-line
-                              validations={"minLength:8", "maxLength:16"}
                               errorLabel={ errorLabel }
                               validationErrors={{
-                                isEmail: 'That is not a valid password',
                                 isDefaultRequiredValue: 'Password is Required',
                               }}
                             />
                           </Form.Group>
                           <Form.Group>
-                            <Form.Button content="Submit" color="green"/>
+                            <Form.Button content="Submit" color="green" onClick={this.close} />
                             <Form.Button type="button" content="Reset" onClick={ () => this.form.reset() }/>
                           </Form.Group>
                         </Form>

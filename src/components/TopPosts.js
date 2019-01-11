@@ -39,7 +39,7 @@ class TopPosts extends Component {
         <Grid relaxed columns={3}>
           { this.state.topImages.map(image => {
             return (<Grid.Column>
-            <PostCard key={image.id} image={image}/>
+            <PostCard key={image.id} image={image} artist={image.artist}/>
             </Grid.Column>)
           }) }
         </Grid>
