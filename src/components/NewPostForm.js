@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form } from 'formsy-semantic-ui-react'
 import { Label, Container, Segment, Modal, Button, Header } from 'semantic-ui-react';
+import { RAILS_URL } from "./RailsURL";
+
 
 const styles = {
   root: {
@@ -26,7 +28,7 @@ export default class NewPostForm extends Component {
 
     const body = {...formData, artist_id: this.props.artistId}
 
-    fetch('http://localhost:3001/images/', {
+    fetch(`${RAILS_URL}/images/`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(body)

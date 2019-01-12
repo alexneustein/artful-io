@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ArtistCard from './ArtistCard'
 import { Divider, Pagination, Dimmer, Loader, Container, Grid } from 'semantic-ui-react'
+import { RAILS_URL } from "./RailsURL";
 
 
 class ArtistIndex extends Component {
@@ -11,7 +12,7 @@ class ArtistIndex extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/artists/')
+    fetch(`${RAILS_URL}/artists/`)
     .then(res => res.json())
     .then(this.initialState)
   }
@@ -30,7 +31,7 @@ handlePage = (e, { activePage }) => {
   this.setState({
     loading: true
   })
-  const url = "http://localhost:3001/artists/?page=" + pagestring
+  const url = `${RAILS_URL}/artists/?page=` + pagestring
 
   fetch(url)
   .then(res => res.json())

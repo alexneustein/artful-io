@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PostCard from './PostCard'
 import { Divider, Pagination, Dimmer, Loader, Container, Grid } from 'semantic-ui-react'
+import { RAILS_URL } from "./RailsURL";
 
 
 class ImageIndex extends Component {
@@ -11,7 +12,7 @@ class ImageIndex extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/images/')
+    fetch(`${RAILS_URL}/images/`)
     .then(res => res.json())
     .then(this.initialState)
   }
@@ -31,7 +32,7 @@ class ImageIndex extends Component {
     this.setState({
       loading: true
     })
-    const url = "http://localhost:3001/images/?page=" + pagestring
+    const url = `${RAILS_URL}/images/?page=` + pagestring
 
     fetch(url)
     .then(res => res.json())

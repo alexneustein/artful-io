@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ArtistCard from './ArtistCard'
 import { Dimmer, Loader, Grid, Container } from 'semantic-ui-react';
+import { RAILS_URL } from "./RailsURL";
 
 
 class TopArtists extends Component {
@@ -11,7 +12,7 @@ class TopArtists extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/artists-top/')
+    fetch(`${RAILS_URL}/artists-top/`)
     .then(res => res.json())
     .then(this.initialState)
   }

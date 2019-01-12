@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PostCard from './PostCard'
 import { Dimmer, Loader, Grid, Container } from 'semantic-ui-react';
+import { RAILS_URL } from "./RailsURL";
 
 
 class TopPosts extends Component {
@@ -10,7 +11,7 @@ class TopPosts extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/images-top/')
+    fetch(`${RAILS_URL}/images-top/`)
     .then(res => res.json())
     .then(this.initialState)
   }

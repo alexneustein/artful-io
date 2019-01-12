@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Comment, Card, Icon } from 'semantic-ui-react'
+import { RAILS_URL } from "./RailsURL";
 
 
 class PostComment extends Component {
@@ -17,7 +18,7 @@ class PostComment extends Component {
         liked: true,
         likes: this.props.comment.likes += 1
       })
-      fetch(`http://localhost:3001/comments/${this.props.comment.id}/addlike`, {
+      fetch(`${RAILS_URL}/comments/${this.props.comment.id}/addlike`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'}
       })
@@ -26,7 +27,7 @@ class PostComment extends Component {
         liked: false,
         likes: this.props.comment.likes -= 1
       })
-      fetch(`http://localhost:3001/comments/${this.props.comment.id}/unlike`, {
+      fetch(`${RAILS_URL}/comments/${this.props.comment.id}/unlike`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'}
       })

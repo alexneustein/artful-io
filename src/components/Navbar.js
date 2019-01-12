@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Menu, Header, Icon, Input, Confirm, Label, Container, Segment, Modal } from 'semantic-ui-react'
 import { Form } from 'formsy-semantic-ui-react'
+import { RAILS_URL } from "./RailsURL";
 
 class Navbar extends Component {
   state = {
@@ -32,7 +33,7 @@ class Navbar extends Component {
     this.setState({
       ...formData
     })
-    fetch('http://localhost:3001/artists/', {
+    fetch(`${RAILS_URL}/artists/`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: newArtist

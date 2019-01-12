@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Divider, Container, Image, Header, Card, Icon } from 'semantic-ui-react'
 import CommentContainer from './CommentContainer'
 import dateFormatter from "./helpers";
+import { RAILS_URL } from "./RailsURL";
 
 
 class GalleryPost extends Component {
@@ -16,7 +17,7 @@ class GalleryPost extends Component {
   }
 
   componentDidMount() {
-    const fetchPath = `http://localhost:3001/images/${this.state.imageId}`
+    const fetchPath = `${RAILS_URL}/images/${this.state.imageId}`
     fetch(fetchPath)
     .then(res => res.json())
     .then(this.initialState)
@@ -35,7 +36,7 @@ class GalleryPost extends Component {
         liked: true,
         imageobj: {...this.state.imageobj, likes: this.state.imageobj.likes + 1}
       })
-      fetch(`http://localhost:3001/images/${this.state.imageobj.id}/addlike`, {
+      fetch(`${RAILS_URL}/images/${this.state.imageobj.id}/addlike`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'}
       })
@@ -45,7 +46,7 @@ class GalleryPost extends Component {
         liked: false,
         imageobj: {...this.state.imageobj, likes: this.state.imageobj.likes - 1}
       })
-      fetch(`http://localhost:3001/images/${this.state.imageobj.id}/unlike`, {
+      fetch(`${RAILS_URL}/images/${this.state.imageobj.id}/unlike`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'}
       })

@@ -3,6 +3,7 @@ import { List, Divider, Container, Grid, Image, Header, Card, Icon } from 'seman
 import dateFormatter from "./helpers";
 import PostCard from './PostCard'
 import NewPostForm from './NewPostForm'
+import { RAILS_URL } from "./RailsURL";
 
 
 class ArtistProfile extends Component {
@@ -17,7 +18,7 @@ class ArtistProfile extends Component {
   }
 
   componentDidMount() {
-    const fetchPath = `http://localhost:3001/artists/${this.state.artistId}`
+    const fetchPath = `${RAILS_URL}/artists/${this.state.artistId}`
     fetch(fetchPath)
     .then(res => res.json())
     .then(this.initialState)
@@ -35,7 +36,7 @@ class ArtistProfile extends Component {
         liked: true,
         artistobj: {...this.state.artistobj, likes: this.state.artistobj.likes + 1}
       })
-      fetch(`http://localhost:3001/artists/${this.state.artistobj.id}/addlike`, {
+      fetch(`${RAILS_URL}/artists/${this.state.artistobj.id}/addlike`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'}
       })
@@ -45,7 +46,7 @@ class ArtistProfile extends Component {
         liked: false,
         artistobj: {...this.state.artistobj, likes: this.state.artistobj.likes - 1}
       })
-      fetch(`http://localhost:3001/artists/${this.state.artistobj.id}/unlike`, {
+      fetch(`${RAILS_URL}/artists/${this.state.artistobj.id}/unlike`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'}
       })
